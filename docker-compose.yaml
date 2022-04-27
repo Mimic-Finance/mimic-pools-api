@@ -2,18 +2,18 @@ version: "3.3"
 
 services:
   db:
-    image: mongo
+    image: mongo:4.4
     container_name: mongodb
     environment:
-      MONGO_INITDB_DATABASE: logs
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: KongLogging2022
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
       - "27017:27017"
 
-  request-logs:
+  api:
     build: .
-    container_name: request-logs
+    container_name: mimic-pools-api
     restart: always
     volumes:
       - /app/node_modules
