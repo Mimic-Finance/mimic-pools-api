@@ -6,6 +6,7 @@ const port = 3000;
 dotenv.config();
 
 const pools = require("./routes/pools");
+const stat = require("./routes/stat");
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/pools", pools);
+app.use("/stat", stat);
 
 app.listen(port, () => {
   console.log(`API listening at port:${port}`);
