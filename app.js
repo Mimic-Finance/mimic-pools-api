@@ -7,6 +7,7 @@ dotenv.config();
 
 const pools = require("./routes/pools");
 const stat = require("./routes/stat");
+const price = require("./routes/price");
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/pools", pools);
 app.use("/stat", stat);
+app.use("/price", price);
 
 app.listen(port, () => {
   console.log(`API listening at port:${port}`);
