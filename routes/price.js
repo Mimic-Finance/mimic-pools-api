@@ -22,8 +22,12 @@ route.get("/", async (req, res) => {
 });
 
 route.get("/:poolAddress", async (req, res) => {
-  const price_data = await getPrice(1, req.params.poolAddress);
-  return res.status(200).json(price_data);
+  try {
+    const price_data = await getPrice(1, req.params.poolAddress);
+    return res.status(200).json(price_data);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 /*=======================GET PRICE FUNCTION==============================*/
