@@ -1,6 +1,7 @@
 const express = require("express"),
   cors = require("cors"),
   dotenv = require("dotenv");
+require("express-group-routes");
 
 const port = 3000;
 dotenv.config();
@@ -20,9 +21,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/pools", pools);
-app.use("/stat", stat);
-app.use("/price", price);
+app.group("/api/v1", (route) => {
+  route.use("/pools", pools);
+  route.use("/stat", stat);
+  route.use("/price", price);
+});
 
 app.listen(port, () => {
   console.log(`API listening at port:${port}`);
