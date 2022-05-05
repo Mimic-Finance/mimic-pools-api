@@ -85,8 +85,8 @@ const getPrice = async (inputAmount, poolAddress) => {
     PROVIDER
   );
 
-  const tokenAddress1 = await poolContract.token1();
-  const tokenAddress0 = await poolContract.token0();
+  const tokenAddress0 = await poolContract.token1();
+  const tokenAddress1 = await poolContract.token0();
 
   const tokenAbi0 = await getAbi(tokenAddress0);
   const tokenAbi1 = await getAbi(tokenAddress1);
@@ -121,8 +121,8 @@ const getPrice = async (inputAmount, poolAddress) => {
   );
 
   const quotedAmountOut = await quoterContract.callStatic.quoteExactInputSingle(
-    immutables.token0,
     immutables.token1,
+    immutables.token0,
     immutables.fee,
     amountIn,
     0
