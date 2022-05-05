@@ -10,7 +10,9 @@ const {
 const { getAbi, getPoolImmutables } = require("../libs/helpers");
 const INFURA_URL = process.env.INFURA_URL;
 
-const PROVIDER = new ethers.providers.JsonRpcProvider(INFURA_URL);
+const PROVIDER = new ethers.providers.JsonRpcProvider(
+  "https://kovan.poa.network/"
+);
 const QUOTER_ADDRESS = "0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6";
 
 const { MongoClient } = require("mongodb");
